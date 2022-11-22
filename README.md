@@ -20,7 +20,7 @@ choco install virtualbox vagrant
 ## Toolset
 
 - Docker and docker-compose
-- Python 3.10
+- Python3, pip, poetry
 - Git
 - Ansible 2.13
 - Google Chrome

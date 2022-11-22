@@ -29,14 +29,21 @@ Vagrant.configure("2") do |config|
     apt-get update -y
     # Upgrade installed packages
     apt-get upgrade -y
-    # Install toolset
+    
+	# Install tools with package manager
     apt install -y ubuntu-desktop
     apt install -y python3-pip python3-venv
     apt install -y ansible
-    # Configure vm
+	
+	# Install Poetry
+	curl -sSL https://install.python-poetry.org | python3 -
+	echo 'export PATH="/home/vagrant/.local/bin:$PATH"' >> /home/vagrant/.bashrc
+    
+	# Configure vm
     timedatectl set-timezone Europe/Amsterdam
 	cat /home/vagrant/.ssh/me.pub >> /home/vagrant/.ssh/authorized_keys
-    # Install chrome
+    
+	# Install Chrome
     wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
     dpkg -i google-chrome-stable_current_amd64.deb
   SHELL
