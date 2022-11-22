@@ -17,9 +17,10 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.network "private_network", ip: "192.168.56.20"
-  config.vm.synced_folder "./mysharedfolder", "/mnt/mysharedfolder", type: "virtualbox", automount: true
+  config.vm.synced_folder "./sharedfolder", "/mnt/sharedfolder", type: "virtualbox", automount: true
   config.vm.provision :docker
   config.vm.provision :docker_compose
+  config.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "~/.ssh/me.pub"
 
   config.vm.provision "shell", inline: <<-SHELL
     # Add PPA for ansible
@@ -34,8 +35,9 @@ Vagrant.configure("2") do |config|
     apt install -y ansible
     # Configure vm
     timedatectl set-timezone Europe/Amsterdam
+	cat /home/vagrant/.ssh/me.pub >> /home/vagrant/.ssh/authorized_keys
     # Install chrome
     wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-    dpkg -i google-chrome-stable_current_amd64.deb 
+    dpkg -i google-chrome-stable_current_amd64.deb
   SHELL
 end

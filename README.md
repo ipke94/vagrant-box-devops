@@ -27,8 +27,12 @@ choco install virtualbox vagrant
 
 ## How to use?
 
-```bash
+For SSH access, public key on the host machine `~/.ssh/id_rsa.pub` is added to the `authorized_keys` file of the vagrant box. You have a different key? Simply change the file path in `Vagrantfile`.
+
+```
 vagrant up
+
+vagrant ssh
 ```
 
-username / password: `vagrant / vagrant`
+Username / Password for remote desktop connection: `vagrant / vagrant`
