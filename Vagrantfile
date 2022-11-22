@@ -22,13 +22,16 @@ Vagrant.configure("2") do |config|
   config.vm.provision :docker_compose
 
   config.vm.provision "shell", inline: <<-SHELL
-    # Update repositories
+    # Add PPA for ansible
+	apt-add-repository ppa:ansible/ansible
+	# Update package index
     apt-get update -y
     # Upgrade installed packages
     apt-get upgrade -y
-    # Install dependent packages
+    # Install toolset
     apt install -y ubuntu-desktop
     apt install -y python3-pip python3-venv
+    apt install -y ansible
     # Configure vm
     timedatectl set-timezone Europe/Amsterdam
     # Install chrome

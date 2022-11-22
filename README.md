@@ -21,6 +21,8 @@ choco install virtualbox vagrant
 
 - Docker and docker-compose
 - Python 3.10
+- Git
+- Ansible 2.13
 - Google Chrome
 
 ## How to use?
