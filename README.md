@@ -1,38 +1,45 @@
 # vagrant-box-devops
 
-A simple Vagrantfile to setup a development environment based on Ubuntu desktop with some DevOps toolset in it.
+A simple Vagrantfile to setup a development environment based on Ubuntu desktop
+with some generic DevOps toolset in it.
 
 ## Requisites
 
-For running this box, you need to have the following tools:
+To run this box, you need the following tools:
 
 - VirtualBox
 - Vagrant
 
 💡 Pro tip
 
-On Windows, you can install both at once with Chocolatey with
+On Windows, you can install both at once with Chocolatey:
 
 ```
 choco install virtualbox vagrant
 ```
 
-## Toolset
+## Tools in the box
 
-- Docker and docker-compose
-- Python3, pip, poetry
-- Git
-- Ansible 2.13
-- Google Chrome
+- docker and docker-compose
+- python3, pip
+- git
+- ansible
+- ansible-lint, yamllint
+- google chrome
 
 ## How to use?
 
-For SSH access, public key on the host machine `~/.ssh/id_rsa.pub` is added to the `authorized_keys` file of the vagrant box. You have a different key? Simply change the file path in `Vagrantfile`.
+For SSH access, all sile in `~/.ssh` are copied to the home of vagrant user
+also public keys are added to `authorized_keys`.
 
-```
+```bash
+# Start up / provision the VM
 vagrant up
 
+# Connect with SSH
 vagrant ssh
+# or
+# ssh -i ~/.ssh/id_rsa vagrant@192.168.56.20
 ```
 
 Username / Password for remote desktop connection: `vagrant / vagrant`
