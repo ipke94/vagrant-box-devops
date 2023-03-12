@@ -33,6 +33,9 @@ For SSH access, all sile in `~/.ssh` are copied to the home of vagrant user
 also public keys are added to `authorized_keys`.
 
 ```bash
+# Install required plugin
+vagrant plugin install vagrant-docker-compose
+
 # Start up / provision the VM
 vagrant up
 
