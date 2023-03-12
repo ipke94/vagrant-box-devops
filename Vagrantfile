@@ -40,9 +40,8 @@ Vagrant.configure("2") do |config|
 	
     # Configure vm
     timedatectl set-timezone Europe/Amsterdam
-	  cat /home/vagrant/.ssh/*.pub >> /home/vagrant/.ssh/authorized_keys
-    
-	  # Install Chrome
+    cat /home/vagrant/.ssh/*.pub >> /home/vagrant/.ssh/authorized_keys
+    # Install Chrome
     wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
     dpkg -i google-chrome-stable_current_amd64.deb
   SHELL
